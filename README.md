@@ -10,8 +10,15 @@ System commands to be executed are given in the configuration file. Also waiting
 The easiest way to compile the program is by running the cc command. In my case, the program runs on the OPENWRT system compiled in the MIPSEL architecture. Before building the program, you need to download the OpenWrt sources from github, and build the system (unfortunately CUPS also needs to be built "by hand"). After building the system, just issue the commands:
 
 export PATH = $ PATH: /cross-compile/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.5.0_musl/bin/
+
 export STAGING_DIR = / cross-compile / openwrt / staging_dir / toolchain-mipsel_24kc_gcc-7.5.0_musl /
+
 /cross-compile/openwrt/staging_dir/toolchain-mipsel_24kc_gcc-7.5.0_musl/bin/mipsel-openwrt-linux-gcc lpjobmonitor.c -o lpjobmonitor
+
+
+If you are building the program directly on the platform it will be used on, just type:
+
+cc lpjobmonitor.c -o lpjobmonitor
 
 The output file must be placed in the bin, sbin directory with run permission. Then in rc.local or other startup script, depending on the system used, you can add the line:
 lpjobmonitor &
